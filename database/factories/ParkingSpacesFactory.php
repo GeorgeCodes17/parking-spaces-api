@@ -18,7 +18,7 @@ class ParkingSpacesFactory extends Factory
     {
         $fake = fake();
         return [
-            'name' => $fake->name(),
+            'name' => $fake->city(),
             'latitude' => $fake->randomFloat(4, -90, 90),
             'longitude' => $fake->randomFloat(4, -180, 180),
             'created_at' => now(),
