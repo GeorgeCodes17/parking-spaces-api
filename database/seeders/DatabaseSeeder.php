@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(ParkingSpacesSeeder::class);
         $this->call(PricingProfilesSeeder::class);
+        $this->call(BookingsSeeder::class);
     }
 }

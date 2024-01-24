@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -20,6 +21,20 @@ return new class extends Migration
             $table->date("end");
             $table->timestamps();
         });
+
+        DB::statement("CREATE TRIGGER `pricing_profiles_non_updateable_columns`
+            BEFORE UPDATE on `pricing_profiles` FOR EACH ROW
+            BEGIN
+                IF NEW.name != OLD.name THEN
+                    SIGNAL SQLSTATE '45000'
+                        SET MESSAGE_TEXT = 'pricing_profiles.name is not allowed to be updated, stop trying to update it.';
+                END IF;
+                IF NEW.price != OLD.price THEN
+                    SIGNAL SQLSTATE '45000'
+                        SET MESSAGE_TEXT = 'pricing_profiles.price is not allowed to be updated, stop trying to update it.';
+                END IF;
+            END;
+        ");
     }
 
     /**
