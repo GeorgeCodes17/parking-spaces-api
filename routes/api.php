@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ParkingSpacesController;
+use App\Http\Controllers\PricingProfilesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get("parking-spaces", [ParkingSpacesController::class, 'index']);
+Route::get("pricing-profiles", [PricingProfilesController::class, 'index']);

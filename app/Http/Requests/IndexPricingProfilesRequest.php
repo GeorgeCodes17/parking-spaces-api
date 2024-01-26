@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class IndexParkingSpacesRequest extends AbstractRequest
+class IndexPricingProfilesRequest extends AbstractRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -12,8 +12,8 @@ class IndexParkingSpacesRequest extends AbstractRequest
     public function rules(): array
     {
         return [
-            "start_date" => 'required|date_format:Y-m-d-H:i|before:end_date',
-            "end_date" => 'required|date_format:Y-m-d-H:i|after:start_date'
+            "start_date" => 'required|date_format:Y-m-d|before:end_date',
+            "end_date" => 'required|date_format:Y-m-d|after:start_date'
         ];
     }
 }
