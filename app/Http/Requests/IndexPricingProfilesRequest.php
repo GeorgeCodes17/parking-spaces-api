@@ -21,10 +21,10 @@ class IndexPricingProfilesRequest extends FormRequest
     }
 
     public function getStartDate(): Carbon {
-        return $this->date("start_date");
+        return $this->date("start_date", "Y-m-d");
     }
 
     public function getEndDate(): Carbon {
-        return $this->date("end_date");
+        return $this->date("end_date", "Y-m-d");
     }
 }
