@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\IndexPricingProfilesRequest;
-use App\Models\PricingProfiles;
+use App\Repositories\PricingProfilesRepository;
 use Illuminate\Http\Response;
 
 class PricingProfilesController extends Controller
 {
     public function index(IndexPricingProfilesRequest $request): Response {
-        $model = new PricingProfiles();
-        $totalPrice = $model->getPriceByDates(
+        $repository = new PricingProfilesRepository();
+        $totalPrice = $repository->getPriceByDates(
             $request->date("start_date"),
             $request->date("end_date")
         );
