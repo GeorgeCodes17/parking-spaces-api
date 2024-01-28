@@ -8,9 +8,14 @@ use Illuminate\Http\Response;
 
 class PricingProfilesController extends Controller
 {
+    private PricingProfilesRepository $repository;
+
+    public function __construct (PricingProfilesRepository $repository) {
+        $this->repository = $repository;
+    }
+
     public function index(IndexPricingProfilesRequest $request): Response {
-        $repository = new PricingProfilesRepository();
-        $totalPrice = $repository->getPriceByDates(
+        $totalPrice = $this->repository->getPriceByDates(
             $request->date("start_date"),
             $request->date("end_date")
         );
