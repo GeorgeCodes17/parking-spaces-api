@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
-class IndexPricingProfilesRequest extends AbstractRequest
+use Carbon\Carbon;
+use Illuminate\Foundation\Http\FormRequest;
+
+class IndexPricingProfilesRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,5 +18,13 @@ class IndexPricingProfilesRequest extends AbstractRequest
             "start_date" => 'required|date_format:Y-m-d|before:end_date',
             "end_date" => 'required|date_format:Y-m-d|after:start_date'
         ];
+    }
+
+    public function getStartDate(): Carbon {
+        return $this->date("start_date");
+    }
+
+    public function getEndDate(): Carbon {
+        return $this->date("end_date");
     }
 }

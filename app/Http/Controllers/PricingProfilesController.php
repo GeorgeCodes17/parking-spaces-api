@@ -15,9 +15,9 @@ class PricingProfilesController extends Controller
     }
 
     public function index(IndexPricingProfilesRequest $request): Response {
-        $totalPrice = $this->repository->getPriceByDates(
-            $request->date("start_date"),
-            $request->date("end_date")
+        $totalPrice = $this->repository->getByDates(
+            $request->getStartDate(),
+            $request->getEndDate()
         );
 
         return response($totalPrice);

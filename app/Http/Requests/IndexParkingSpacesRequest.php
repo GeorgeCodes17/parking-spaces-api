@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
-class IndexParkingSpacesRequest extends AbstractRequest
+use Illuminate\Foundation\Http\FormRequest;
+
+class IndexParkingSpacesRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,5 +17,13 @@ class IndexParkingSpacesRequest extends AbstractRequest
             "start_date" => 'required|date_format:Y-m-d-H:i|before:end_date',
             "end_date" => 'required|date_format:Y-m-d-H:i|after:start_date'
         ];
+    }
+
+    public function getStartDate(): string {
+        return $this->get("start_date");
+    }
+
+    public function getEndDate(): string {
+        return $this->get("end_date");
     }
 }

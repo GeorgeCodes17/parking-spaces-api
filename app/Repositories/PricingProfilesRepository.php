@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class PricingProfilesRepository {
-    public function getPriceByDates(Carbon $startDate, Carbon $endDate): int {
+    public function getByDates(Carbon $startDate, Carbon $endDate): int {
         $totalPrice = 0;
         while (!$startDate->equalTo($endDate)) {
             $totalPrice += DB::table("pricing_profiles as p")
