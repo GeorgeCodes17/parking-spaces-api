@@ -15,7 +15,7 @@ class ParkingSpacesController extends Controller
     }
 
     public function index(IndexParkingSpacesRequest $request): Response {
-        $parkingSpaces = $this->repository->getByDates(
+        $parkingSpaces = $this->repository->getFreeSpacesByDates(
             $request->getStartDate(),
             $request->getEndDate()
         );

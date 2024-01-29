@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class IndexParkingSpacesRequest extends FormRequest
@@ -19,11 +20,11 @@ class IndexParkingSpacesRequest extends FormRequest
         ];
     }
 
-    public function getStartDate(): string {
-        return $this->get("start_date");
+    public function getStartDate(): Carbon {
+        return $this->date("start_date", "Y-m-d-H:i");
     }
 
-    public function getEndDate(): string {
-        return $this->get("end_date");
+    public function getEndDate(): Carbon {
+        return $this->date("end_date", "Y-m-d-H:i");
     }
 }
