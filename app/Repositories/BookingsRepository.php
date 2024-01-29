@@ -7,14 +7,14 @@ use App\Models\Bookings;
 use Carbon\Carbon;
 
 class BookingsRepository {
-    public function store(StoreBookingsRequest $request) {
+    public function store(StoreBookingsRequest $request): bool {
         $model = new Bookings;
         $model->email = $request->getEmail();
         $model->_fk_parking_space = $request->getParkingSpace();
         $model->_fk_pricing_profile = $request->getPricingProfile();
         $model->start = $request->getStart();
         $model->end = $request->getEnd();
-        
+
         return $model->save();
     }
 
